@@ -1,7 +1,7 @@
 /* Custom CSS */
 
 :root {
-    font-size: 20px;
+    font-size: 16px;
 
     /* Variables */
     --fontHeader: 'Dela Gothic One';
@@ -10,6 +10,7 @@
 
     --neutral-0: #ffffff;
     --neutral-100: #f0f0f0;
+    --neutral-500: #847B92;
     --neutral-900: #210F39;
     --yellow: #FFCA42;
     --purple: #E032CF;
@@ -17,6 +18,7 @@
     --backgroundMain: var(--neutral-100);
     --backgroundElevated: var(--neutral-0);
     --textMain: var(--neutral-900);
+    --textMuted: var(--neutral-500);
 
     background: var(--backgroundMain);
     color: var(--textMain);
@@ -50,57 +52,41 @@ header {
     display: grid;
     place-items: center;
     padding-block: 4rem;
+    padding-inline: 16px;
 
     background: radial-gradient(40.38% 57.37% at 40.37% 44.53%, rgba(224, 50, 207, 0.25) 0%, rgba(224, 50, 207, 0.00) 100%), var(--backgroundMain);
 }
 
-.heroImgBack, .heroImgFront, .heroText {
-    grid-area: 1 / 1;
-    user-select: none;
-}
-
-.heroImgFront {
-    z-index: 10;
-}
-
-.heroText {
-    text-transform: lowercase;
-    line-height: 1;
-    padding-block-end: 2rem;
-}
-
-.heroText .heroSerif {
-    font-family: var(--fontHeaderAlt);
-    font-size: 135px;
-}
-
-.heroText .heroSans {
-    font-family: var(--fontHeader);
-    font-size: 120px;
+.heroImg {
+    width: 100%;
+    max-width: 1024px;
 }
 
 main {
-    min-height: 30rem;
     background-color: var(--yellow);
 }
 
 section {
     max-width: 1024px;
     margin: 0 auto;
+    padding-block: 4rem;
+    padding-inline: 16px;
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .buttonGroup {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    width: 1024px;
+    width: 100%;
+    max-width: 1024px;
     margin-block-start: 3rem;
 }
 
-a.button {
+a.button:any-link {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,9 +97,68 @@ a.button {
     border-radius: 5rem;
     font-family: var(--fontHeader);
     font-size: 1.5rem;
+    transition: background 50ms ease, color 50ms ease;
+}
+a.button:hover {
+    background: var(--backgroundElevated);
+    color: var(--purple);
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+a.card:any-link {
+    display: flex;
+    flex-direction: column;
+    background: var(--backgroundElevated);
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.cardImage {
+    display: block;
+    background: var(--purple);
+    width: 100%;
+    height: 15rem;
+}
+
+.cardContents {
+    padding: 2rem;
+}
+
+.tagList {
+    display: flex;
+    gap: 0.5rem;
+    font-style: italic;
+    color: var(--textMuted);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--fontHeader);
 }
 
 h1 {
-    font-family: var(--fontHeader);
     font-size: 4rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--purple);
+}
+
+em {
+    font-style: italic;
+}
+
+@media only screen 
+   and (min-width : 1024px) {
+   :root {
+    font-size: 20px;
+   }
+   .buttonGroup {
+    flex-direction: row;
+   }
 }
